@@ -1,0 +1,53 @@
+using System;
+
+namespace ConsoleApp31
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+
+            var fish = new Fish();
+            fish.SayHello();
+
+            fish = new Octopus();
+            fish.SayHello();
+
+            var octy = new Octopus();
+            octy.SayHello();
+
+            var dolphy = new Dolphin();
+            dolphy.SayHello("RED");
+
+            Console.ReadLine();
+        }
+    }
+
+    class Fish
+    {
+        public int numberOfTentacles = 0;
+        public void SayHello()
+        {
+            // Pay Attention: this.GetType().Name is a reflection reference to the class name: In this case: It will return "Fish"   
+            Console.WriteLine($"I am a {this.GetType().Name} I have {numberOfTentacles} tentacles");
+        }
+    }
+
+    class Dolphin : Fish
+    {
+        public void SayHello(string favoriteColor)
+        {
+            Console.WriteLine($" I should not be here. {this.GetType().Name} are MAMMALS not fish. We breath air just like you. My favorite color is {favoriteColor}");
+        }
+    }
+
+    class Octopus : Fish
+    {
+        int numberOfTentacles = 8;
+        public void SayHello()
+        {
+            Console.WriteLine($"I am a {this.GetType().Name} I have {this.numberOfTentacles} tentacles");
+        }
+    }
+}
